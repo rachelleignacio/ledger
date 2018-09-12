@@ -9,6 +9,7 @@
         android:id="@+id/client_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="@dimen/default_text_size"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
