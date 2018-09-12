@@ -1,8 +1,7 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 28
@@ -13,6 +12,11 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        kapt {
+            arguments {
+                arg("room.schemaLocation", "$projectDir/schemas".toString())
+            }
+        }
     }
     buildTypes {
         release {
@@ -29,12 +33,24 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0-rc02'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation "androidx.room:room-runtime:$room_version"
+    implementation "android.arch.persistence.room:rxjava2:1.1.1"
+    implementation "io.reactivex.rxjava2:rxjava:$rxJava_version"
+    implementation "io.reactivex.rxjava2:rxkotlin:$rxKotlin_version"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxAndroid_version"
+    implementation "com.google.dagger:dagger:$dagger_version"
+    implementation "com.jakewharton:butterknife:$butterknife_version"
 
+    kapt "androidx.room:room-compiler:$room_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    kapt "com.jakewharton:butterknife-compiler:$butterknife_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
+    annotationProcessor "com.google.dagger:dagger-compiler:$dagger_version"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$butterknife_version"
 
     testImplementation 'junit:junit:4.12'
     testImplementation "androidx.room:room-testing:$room_version"
 
     androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
+    androidTestImplementation "android.arch.core:core-testing:1.1.1"
 }

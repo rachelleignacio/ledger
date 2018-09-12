@@ -1,20 +1,21 @@
-package com.rachelleignacio.ledger.daos
+package com.rachelleignacio.ledger.data.daos
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
-import com.rachelleignacio.ledger.models.Client
+import com.rachelleignacio.ledger.data.models.Client
+import io.reactivex.Observable
 
 @Dao
 interface ClientDao {
 
     @Query("SELECT * FROM clients")
-    fun getAllClients(): List<Client>
+    fun getAllClients(): Observable<List<Client>>
 
     @Insert
     fun addClient(newClient: Client)
 
     @Update
-    fun udpateClient(client: Client)
+    fun updateClient(client: Client)
 }

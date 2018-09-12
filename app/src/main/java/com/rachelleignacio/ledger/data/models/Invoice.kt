@@ -1,4 +1,4 @@
-package com.rachelleignacio.ledger.models
+package com.rachelleignacio.ledger.data.models
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

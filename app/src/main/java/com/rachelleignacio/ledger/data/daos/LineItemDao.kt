@@ -1,9 +1,9 @@
-package com.rachelleignacio.ledger.daos
+package com.rachelleignacio.ledger.data.daos
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Update
-import com.rachelleignacio.ledger.models.LineItem
+import com.rachelleignacio.ledger.data.models.LineItem
 
 @Dao
 interface LineItemDao {
