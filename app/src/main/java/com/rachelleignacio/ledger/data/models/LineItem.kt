@@ -12,10 +12,10 @@ import androidx.room.*
             ForeignKey(entity = Invoice::class, parentColumns = ["id"], childColumns = ["invoice_id"])
         ]
 )
-data class LineItem(@PrimaryKey(autoGenerate = true) val id: Int = -1,
+data class LineItem(@PrimaryKey(autoGenerate = true) var id: Int = 0,
                     @ColumnInfo(name = "unit_type") val unitType: Unit = Unit.HOUR,
                     @ColumnInfo(name = "rate_per_unit") val ratePerUnit: Double = 1.0,
                     @ColumnInfo(name = "billable_units") val billableUnits: Double = 0.0,
-                    @ColumnInfo(name = "client_id") val clientId: Int = -1,
+                    @ColumnInfo(name = "client_id") val clientId: Int = 0,
                     @ColumnInfo(name = "is_paid") val isPaid: Boolean = false,
-                    @ColumnInfo(name = "invoice_id") val invoiceId: Int = -1)
+                    @ColumnInfo(name = "invoice_id") val invoiceId: Int = 0)

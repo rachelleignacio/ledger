@@ -31,6 +31,7 @@ fun newClientListFragment() = ClientListFragment()
 class ClientListFragment internal constructor() : Fragment(), ClientListView {
 
     private val intentPublisher = PublishSubject.create<ClientListIntent>()
+    private val onAddClientListener = PublishSubject.create<Client>()
     private var disposables = CompositeDisposable()
     private val clientListAdapter = ClientListAdapter()
 
@@ -49,16 +50,30 @@ class ClientListFragment internal constructor() : Fragment(), ClientListView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         ButterKnife.bind(view)
-        clientList = view.client_list
-        clientList?.setup()
         daggerComponent.inject(this)
+        initClientList(view)
         subscribeViewModel()
         observeViewModel()
+        initAddClientClickListner(view)
+    }
+
+    private fun initAddClientClickListner(view: View) {
+        view.add_new_client_icon.setOnClickListener(onAddClientClickListener)
+        view.add_new_client_text.setOnClickListener(onAddClientClickListener)
+    }
+
+    private fun initClientList(view: View) {
+        clientList = view.client_list
+        clientList?.setup()
     }
 
     private fun RecyclerView.setup() {
         setHasFixedSize(true)
         layoutManager = LinearLayoutManager(activity)
+    }
+
+    private val onAddClientClickListener = View.OnClickListener {
+        newAddClientDialogFragment(onAddClientListener).show(fragmentManager, ADD_CLIENT_DIALOG_FRAGMENT_TAG)
     }
 
     private fun subscribeViewModel() {
@@ -79,7 +94,10 @@ class ClientListFragment internal constructor() : Fragment(), ClientListView {
                 .addTo(disposables)
     }
 
-    override fun intents(): Observable<ClientListIntent> = intentPublisher.subscribeOn(Schedulers.io())
+    override fun intents(): Observable<ClientListIntent> =
+            intentPublisher
+                    .mergeWith(onAddClientListener.map { ClientListIntent.AddClient(appDatabase, it) })
+                    .subscribeOn(Schedulers.io())
 
     override fun render(viewState: ClientListViewState) {
         when (viewState) {

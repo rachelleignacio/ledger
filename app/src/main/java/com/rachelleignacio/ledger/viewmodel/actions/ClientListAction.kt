@@ -16,8 +16,7 @@ sealed class ClientListAction {
                     .clientDao()
                     .getAllClients()
                     .subscribeOn(Schedulers.io())
-                    .map { ClientListResult.ClientList(listOf(Client(1234, "Test1"))) as ClientListResult }
-//                    .map { ClientListResult.ClientList(it) as ClientListResult }
+                    .map { ClientListResult.ClientList(it) as ClientListResult }
                     .onErrorReturn { ClientListResult.Error(it) }
     }
 

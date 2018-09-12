@@ -7,6 +7,6 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "invoices",
         indices = [Index("id"), Index("is_paid"), (Index("client_id"))])
-data class Invoice(@PrimaryKey(autoGenerate = true) val id: Int = -1,
-                   @ColumnInfo(name = "client_id") val clientId: Int = -1,
+data class Invoice(@PrimaryKey(autoGenerate = true) var id: Int = 0,
+                   @ColumnInfo(name = "client_id") val clientId: Int = 0,
                    @ColumnInfo(name = "is_paid") val isPaid: Boolean = false)

@@ -16,7 +16,7 @@ class ClientListAdapter : RecyclerView.Adapter<ClientViewHolder>() {
             ClientViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.client_list_item, parent, false))
 
     override fun onBindViewHolder(holder: ClientViewHolder, position: Int) {
-        holder.clientName.text = clients[position].name
+        holder.clientName.text = String.format(holder.itemView.resources.getString(R.string.list_item_bullet), clients[position].name)
     }
 
     override fun getItemCount() = clients.size
