@@ -3,4 +3,5 @@
     <string name="title_clients">CLIENTS</string>
     <string name="title_invoices">INVOICES</string>
     <string name="add_new_client">Add New Client</string>
+    <string name="invoice_wip_msg">TBD\n(PS I LOVE YOU)</string>
 </resources>

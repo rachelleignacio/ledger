@@ -26,7 +26,7 @@ import io.reactivex.subjects.PublishSubject
 import kotlinx.android.synthetic.main.fragment_client_list.view.*
 import javax.inject.Inject
 
-fun newClientListFragment(): ClientListFragment = ClientListFragment()
+fun newClientListFragment() = ClientListFragment()
 
 class ClientListFragment internal constructor() : Fragment(), ClientListView {
 
