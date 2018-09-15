@@ -25,6 +25,10 @@ class MainActivity : AppCompatActivity() {
                 showFragment(invoiceListFragment)
                 return@OnNavigationItemSelectedListener true
             }
+            R.id.navigation_packages -> {
+                showFragment(invoiceListFragment)
+                return@OnNavigationItemSelectedListener true
+            }
         }
         false
     }

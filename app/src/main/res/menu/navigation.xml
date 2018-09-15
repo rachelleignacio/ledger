@@ -11,4 +11,9 @@
         android:icon="@drawable/ic_invoices"
         android:title="@string/title_invoices" />
 
+    <item
+        android:id="@+id/navigation_packages"
+        android:icon="@drawable/ic_packages"
+        android:title="@string/title_packages" />
+
 </menu>

@@ -2,10 +2,13 @@
     <string name="app_name">Ledger</string>
     <string name="title_clients">CLIENTS</string>
     <string name="title_invoices">INVOICES</string>
+    <string name="title_packages">PACKAGES</string>
+
     <string name="add_new_client">Add New Client</string>
-    <string name="invoice_wip_msg">TBD\n(PS I LOVE YOU)</string>
-    <string name="list_item_bullet">\u2022 %s</string>
     <string name="add_client_dialog_hint">Enter client\'s name</string>
     <string name="add_client_submit_text">Add</string>
     <string name="add_client_error_toast_message">Sorry babe, I f*cked something up. Try again later or make me fix it.</string>
+
+    <string name="invoice_wip_msg">TBD\n(PS I LOVE YOU)</string>
+    <string name="list_item_bullet">\u2022 %s</string>
 </resources>

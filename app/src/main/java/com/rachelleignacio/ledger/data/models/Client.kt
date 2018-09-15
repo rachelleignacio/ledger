@@ -5,6 +5,8 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "clients",
-        indices = [Index("id"), Index("name")]
-)
+        indices = [
+            Index("id"),
+            Index("name")
+        ])
 data class Client(@PrimaryKey(autoGenerate = true) var id: Int = 0, val name: String = "")
