@@ -8,4 +8,23 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="WrapContentText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/default_text_size</item>
+        <item name="android:layout_marginLeft">@dimen/default_spacing</item>
+        <item name="android:layout_marginRight">@dimen/default_spacing</item>
+    </style>
+
+    <style name="WrapContentText.Small">
+        <item name="android:textSize">@dimen/small_text_size</item>
+    </style>
+
+    <style name="ListItemConstraintLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">@dimen/default_spacing</item>
+        <item name="android:paddingBottom">@dimen/default_spacing</item>
+    </style>
+
 </resources>

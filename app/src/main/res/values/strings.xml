@@ -11,4 +11,10 @@
 
     <string name="invoice_wip_msg">TBD\n(PS I LOVE YOU)</string>
     <string name="list_item_bullet">\u2022 %s</string>
+    
+    <string name="package_line_item_label">Hours remaining:</string>
+    <string name="package_line_item_detail">%d \/ %d</string>
+    
+    <string name="hourly_line_item_price">$%s</string>
+    <string name="hourly_line_item_previous_period">%s - %s</string>
 </resources>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/ListItemConstraintLayout">
+
+    <TextView
+        android:id="@+id/date_created"
+        style="@style/WrapContentText"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:text="9/16/2018"/>
+
+    <TextView
+        android:id="@+id/invoice_period"
+        style="@style/WrapContentText"
+        android:layout_width="@dimen/match_constraint"
+        android:gravity="center"
+        app:layout_constraintLeft_toRightOf="@+id/date_created"
+        app:layout_constraintRight_toLeftOf="@+id/invoice_paid"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="9/1/2018 - 9/15/2018"/>
+
+    <ImageView
+        android:id="@+id/invoice_paid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/default_spacing"
+        android:layout_marginRight="@dimen/default_spacing"
+        android:src="@drawable/ic_invoice_paid"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/invoice_number"/>
+
+    <TextView
+        android:id="@+id/invoice_number"
+        style="@style/WrapContentText"
+        android:textStyle="bold"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="5"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

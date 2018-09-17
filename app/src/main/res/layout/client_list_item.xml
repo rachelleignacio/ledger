@@ -9,7 +9,7 @@
         android:id="@+id/client_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/default_padding"
+        android:padding="@dimen/default_spacing"
         android:textSize="@dimen/default_text_size"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
