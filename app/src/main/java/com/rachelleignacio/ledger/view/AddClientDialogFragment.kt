@@ -10,7 +10,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
-import com.rachelleignacio.ledger.Keyboard
+import com.rachelleignacio.ledger.utils.Keyboard
 import com.rachelleignacio.ledger.R
 import com.rachelleignacio.ledger.data.models.Client
 import io.reactivex.subjects.PublishSubject

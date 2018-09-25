@@ -1,4 +1,4 @@
-package com.rachelleignacio.ledger
+package com.rachelleignacio.ledger.utils
 
 import android.content.Context
 import android.view.View

@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "7c103f49725254ed620b7d06d4aa4a2c",
+    "identityHash": "871dfb6745dba10a408330ec3e21616a",
     "entities": [
       {
         "tableName": "clients",
@@ -48,8 +48,19 @@
         "foreignKeys": []
       },
       {
-        "tableName": "line_items",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `unit_type` TEXT NOT NULL, `rate_per_unit` REAL NOT NULL, `billable_units` REAL NOT NULL, `client_id` INTEGER NOT NULL, `is_paid` INTEGER NOT NULL, `invoice_id` INTEGER NOT NULL, FOREIGN KEY(`client_id`) REFERENCES `clients`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION , FOREIGN KEY(`invoice_id`) REFERENCES `invoices`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "tableName": "LineItem",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` ()",
+        "fields": [],
+        "primaryKey": {
+          "columnNames": [],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "invoices",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `date_created` TEXT NOT NULL, `pay_period_start_date` TEXT NOT NULL, `pay_period_end_date` TEXT NOT NULL, `client_id` INTEGER NOT NULL, `is_paid` INTEGER NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -58,115 +69,21 @@
             "notNull": true
           },
           {
-            "fieldPath": "unitType",
-            "columnName": "unit_type",
+            "fieldPath": "dateCreated",
+            "columnName": "date_created",
             "affinity": "TEXT",
             "notNull": true
           },
           {
-            "fieldPath": "ratePerUnit",
-            "columnName": "rate_per_unit",
-            "affinity": "REAL",
+            "fieldPath": "payPeriodStartDate",
+            "columnName": "pay_period_start_date",
+            "affinity": "TEXT",
             "notNull": true
           },
           {
-            "fieldPath": "billableUnits",
-            "columnName": "billable_units",
-            "affinity": "REAL",
-            "notNull": true
-          },
-          {
-            "fieldPath": "clientId",
-            "columnName": "client_id",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "isPaid",
-            "columnName": "is_paid",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "invoiceId",
-            "columnName": "invoice_id",
-            "affinity": "INTEGER",
-            "notNull": true
-          }
-        ],
-        "primaryKey": {
-          "columnNames": [
-            "id"
-          ],
-          "autoGenerate": true
-        },
-        "indices": [
-          {
-            "name": "index_line_items_id",
-            "unique": false,
-            "columnNames": [
-              "id"
-            ],
-            "createSql": "CREATE  INDEX `index_line_items_id` ON `${TABLE_NAME}` (`id`)"
-          },
-          {
-            "name": "index_line_items_client_id",
-            "unique": false,
-            "columnNames": [
-              "client_id"
-            ],
-            "createSql": "CREATE  INDEX `index_line_items_client_id` ON `${TABLE_NAME}` (`client_id`)"
-          },
-          {
-            "name": "index_line_items_is_paid",
-            "unique": false,
-            "columnNames": [
-              "is_paid"
-            ],
-            "createSql": "CREATE  INDEX `index_line_items_is_paid` ON `${TABLE_NAME}` (`is_paid`)"
-          },
-          {
-            "name": "index_line_items_invoice_id",
-            "unique": false,
-            "columnNames": [
-              "invoice_id"
-            ],
-            "createSql": "CREATE  INDEX `index_line_items_invoice_id` ON `${TABLE_NAME}` (`invoice_id`)"
-          }
-        ],
-        "foreignKeys": [
-          {
-            "table": "clients",
-            "onDelete": "NO ACTION",
-            "onUpdate": "NO ACTION",
-            "columns": [
-              "client_id"
-            ],
-            "referencedColumns": [
-              "id"
-            ]
-          },
-          {
-            "table": "invoices",
-            "onDelete": "NO ACTION",
-            "onUpdate": "NO ACTION",
-            "columns": [
-              "invoice_id"
-            ],
-            "referencedColumns": [
-              "id"
-            ]
-          }
-        ]
-      },
-      {
-        "tableName": "invoices",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `client_id` INTEGER NOT NULL, `is_paid` INTEGER NOT NULL)",
-        "fields": [
-          {
-            "fieldPath": "id",
-            "columnName": "id",
-            "affinity": "INTEGER",
+            "fieldPath": "payPeriodEndDate",
+            "columnName": "pay_period_end_date",
+            "affinity": "TEXT",
             "notNull": true
           },
           {
@@ -198,6 +115,22 @@
             "createSql": "CREATE  INDEX `index_invoices_id` ON `${TABLE_NAME}` (`id`)"
           },
           {
+            "name": "index_invoices_date_created",
+            "unique": false,
+            "columnNames": [
+              "date_created"
+            ],
+            "createSql": "CREATE  INDEX `index_invoices_date_created` ON `${TABLE_NAME}` (`date_created`)"
+          },
+          {
+            "name": "index_invoices_pay_period_start_date",
+            "unique": false,
+            "columnNames": [
+              "pay_period_start_date"
+            ],
+            "createSql": "CREATE  INDEX `index_invoices_pay_period_start_date` ON `${TABLE_NAME}` (`pay_period_start_date`)"
+          },
+          {
             "name": "index_invoices_is_paid",
             "unique": false,
             "columnNames": [
@@ -219,7 +152,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"7c103f49725254ed620b7d06d4aa4a2c\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"871dfb6745dba10a408330ec3e21616a\")"
     ]
   }
 }
